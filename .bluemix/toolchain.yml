@@ -23,16 +23,20 @@ toolchain:
   name: 'simple-tekton-toolchain-{{timestamp}}'
   template:
     getting_started:
-      $ref: "#/messages/template.gettingStarted" 
+      $ref: "#/messages/template.gettingStarted"
 services:
   repo:
     service_id: githubpublic
     parameters:
       repo_name: '{{toolchain.name}}'
-      source_repo_url: 'https://github.com/open-toolchain/hello-tekton'
-      type: clone
-      has_issues: true
-      enable_traceability: true
+      repo_url: 'https://github.com/AlanGreene/ibm-cloud-dev-tekton-pipeline'
+      type: link
+  another-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: hello-tekton
+      repo_url: 'https://github.com/open-toolchain/hello-tekton'
+      type: link
   build:
     service_id: pipeline
     parameters:
@@ -46,18 +50,9 @@ services:
           $text: tekton.yaml
         env:
           GIT_REPO: repo
-          CF_APP_NAME: '{{form.pipeline.parameters.app-name}}'
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
-          REGISTRY_NAMESPACE: '{{form.pipeline.parameters.registry-namespace}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          PROD_CLUSTER_NAME: '{{form.pipeline.parameters.prod-cluster-name}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
-          REPOSITORY: '{{services.repo.parameters.source_repo_url}}'
-          REVISION: master
+          TEXT_TEST: 'some text'
+          INTEGRATION_TEST: 'repo'
         execute: true
-  webide:
-    service_id: orion
 form:
   pipeline:
     parameters:
