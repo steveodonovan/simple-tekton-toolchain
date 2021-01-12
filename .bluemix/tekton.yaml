@@ -16,3 +16,7 @@ properties:
   value: ${INTEGRATION_TEST}
   type: integration
   path: parameters
+- name: morerepos
+  value: ${INTEGRATION_TEST}
+  type: integration
+  path: parameters.repo_url
