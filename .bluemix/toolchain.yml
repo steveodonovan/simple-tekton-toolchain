@@ -29,7 +29,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: '{{toolchain.name}}'
-      repo_url: 'https://github.com/AlanGreene/ibm-cloud-dev-tekton-pipeline'
+      repo_url: 'https://github.com/steveodonovan/test-tekton-pipeline'
       type: link
   another-repo:
     service_id: githubpublic
