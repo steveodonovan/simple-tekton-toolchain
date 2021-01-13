@@ -7,7 +7,7 @@ inputs:
 triggers:
 - type: manual
   name: Manual Trigger
-  eventListener: manual-integrations-listener
+  eventListener: manual-listener
 properties:
 - name: test-property
   value: ${TEXT_TEST}
